@@ -1,0 +1,14 @@
+.nav-bar {
+  height: 100vh;
+  .nav-bar-side {
+    width: 400px;
+  }
+  mat-list {
+    padding: 20px;
+  }
+  .list-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
