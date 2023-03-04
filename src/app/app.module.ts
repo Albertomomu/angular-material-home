@@ -6,15 +6,15 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './shared/layout/header/header.component';
 import { FooterComponent } from './shared/layout/footer/footer.component';
-import { NavigationComponent } from './shared/layout/navigation/navigation.component';
 import { MaterialModule } from './shared/modules/material.module';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    NavigationComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
