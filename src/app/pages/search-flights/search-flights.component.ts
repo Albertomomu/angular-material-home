@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 
 @Component({
@@ -10,8 +13,19 @@ import { HttpClient } from '@angular/common/http';
 export class SearchFlightsComponent implements OnInit{
 
   data: any;
+  myControl = new FormControl('');
+  options: string[] = ['VALENCIA (VLC)', 'MILAN (MIL)', 'Barcelona (BCN)'];
+  filteredOptions: Observable<string[]> | undefined;
 
   constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
+    this.getFetch()
+  }
 
   getFetch = async () => {
     const parser = new DOMParser();
@@ -57,21 +71,12 @@ export class SearchFlightsComponent implements OnInit{
     const flights = this.getFetch();
 
     console.log(flights)
-
-  /*  flights.map(flight => {
-      const flightInfo = {
-        fromAirport: flight.getAttribute('FLSDepartureName'),
-        toAirport: flight.getAttribute('FLSArrivalName'),
-        departureDateTime: flight.getAttribute('FLSDepartureDateTime')
-      }
-      resultData.push(flightInfo);
-
-    })
-    return resultData;*/
   }
 
-  ngOnInit() {
-    this.getFetch()
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
 }
