@@ -14,7 +14,7 @@ export class SearchFlightsComponent implements OnInit{
 
   data: any;
   myControl = new FormControl('');
-  options: string[] = ['VALENCIA (VLC)', 'MILAN (MIL)', 'Barcelona (BCN)'];
+  options: string[] = ['Valencia (VLC)', 'Milan (MIL)', 'Barcelona (BCN)'];
   filteredOptions: Observable<string[]> | undefined;
 
   constructor(private http: HttpClient) { }
