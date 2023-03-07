@@ -8,6 +8,7 @@ import { HeaderComponent } from './shared/layout/header/header.component';
 import { FooterComponent } from './shared/layout/footer/footer.component';
 import { MaterialModule } from './shared/modules/material.module';
 import { HomeComponent } from './pages/home/home.component';
+import { SearchFlightsModule } from './pages/search-flights/search-flights.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomeComponent } from './pages/home/home.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    SearchFlightsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
